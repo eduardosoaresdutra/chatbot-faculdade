@@ -1,3 +1,9 @@
+import time
+import os
+
+def clearConsole():
+    os.system('cls' if os.name=='nt' else 'clear')
+
 def setPhoneNumber():
     ## Verificar telefones na lista de clientes
     pass
@@ -14,7 +20,33 @@ def firstMessage():
     return newUser
 
 def newPlan(userChoice):
-    pass
+
+    loopWait = False
+
+    clearConsole()
+    print('Olá, recebi a sua escolha e vou te transferir para algum de nossos atendentes para que você siga com seu processo...\n')
+    time.sleep(5)
+    clearConsole()
+    print('Aguardando atendente.')
+    time.sleep(0.5)
+    clearConsole()
+    print('Aguardando atendente..')
+    time.sleep(0.5)
+    clearConsole()
+    print('Aguardando atendente...')
+    time.sleep(0.5)
+    clearConsole()
+    print('Aguardando atendente.')
+    time.sleep(0.5)
+    clearConsole()
+    print('Aguardando atendente..')
+    time.sleep(0.5)
+    clearConsole()
+    print('Aguardando atendente...')
+    time.sleep(2)
+    clearConsole()
+    print('Infelizmente nenhum atendente está disponível no momento, iremos encerrar seu atendimento.')
+
 
 def newPlanOption():
     print('Ótimo! Temos os seguintes planos:\n200 Mbp/s\n400 Mbp/s\n500 Mbp/s\n1 Gbp/s\n')
