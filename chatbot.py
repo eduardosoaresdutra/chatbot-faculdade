@@ -43,8 +43,6 @@ def firstMessage():
 
 def callAttendant(userChoice):
 
-    loopWait = False
-
     clearConsole()
     print('Olá, recebi a sua escolha e vou te transferir para algum de nossos atendentes para que você siga com seu processo...\n')
     time.sleep(5)
@@ -69,7 +67,7 @@ def callAttendant(userChoice):
     clearConsole()
     print('Infelizmente nenhum atendente está disponível no momento, iremos encerrar seu atendimento.')
     
-    return False
+    exit()
 
 
 def newPlanOption():
@@ -79,7 +77,7 @@ def newPlanOption():
 
     if 'voltar' in userInternetSpeedOption:
         registeredClient()
-    elif '200' or '400' or '500' or '1' or '1 gb' or '1 gbps' or '1 gbp/s' or 'interesse' or 'quero' or 'interessado' in userInternetSpeedOption:
+    elif userInternetSpeedOption in ('200', '400', '500', '1', '1 gb', '1 gbps', '1 gbp/s', 'interesse', 'quero', 'interessado'):
         callAttendant(userInternetSpeedOption)
     else:
         print('Não entendi a sua mensagem, poderia digitar novamente?\n')
@@ -90,7 +88,7 @@ def supportOption():
 
     if userInput == 'sim':
         print('Ótimo, agradecemos seu contato!')
-        return False
+        exit()
     elif userInput == 'não':
         callAttendant(userInput)
     else:
@@ -99,7 +97,7 @@ def supportOption():
 
 def billingOption():
     print('Sua última fatura foi enviada para o e-mail do cadastro!\nObrigado pelo contato, seu atendimento será encerrado...\n')
-    return False
+    exit()
 
 def registeredClient():
     print('Olá, bem-vindo a WE-RJ Telecom!')
@@ -108,15 +106,15 @@ def registeredClient():
 
     userInputString = userInputString.lower()
 
-    if 'contratar' or 'trocar plano' or 'aumentar velocidade' or 'mudar plano' or 'velocidade' or 'plano' in userInputString:
+    if userInputString in ('contratar', 'trocar plano', 'aumentar velocidade', 'mudar plano', 'velocidade', 'plano'):
         newPlanOption()
-    elif 'suporte' or 'lenta' or 'internet lenta' or 'internet esta lenta' or 'problema' or 'velocidade' in userInputString:
+    elif userInputString in ( 'suporte', 'lenta', 'internet lenta', 'internet esta lenta', 'problema', 'velocidade'):
         supportOption()
-    elif 'boleto' or 'segunda via' or '2ª via' or 'fatura' in userInputString:
+    elif userInputString in ('boleto', 'segunda via', '2ª via', 'fatura'):
         billingOption()
     else:
         print('Não foi posível entender a sua mensagem, seu atendimento será encerrado.')
-        return False
+        exit()
 
 while(True):
     checkPhoneNumber()
