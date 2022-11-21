@@ -100,21 +100,26 @@ def billingOption():
     exit()
 
 def registeredClient():
-    print('Olá, bem-vindo a WE-RJ Telecom!')
+    checkVar = False
+
+    if checkVar == False:
+        print('Olá, bem-vindo a WE-RJ Telecom!')
+        checkVar = True
 
     userInputString = str(input('O que você precisa?\nCaso queira contratar ou trocar de plano escreva “Quero contratar” ou “Quero trocar de plano”.\nCaso esteja com problemas de conexão, escreva "suporte".\nCaso queira seu boleto, digite "boleto":\n'))
 
     userInputString = userInputString.lower()
 
-    if userInputString in ('contratar', 'trocar plano', 'aumentar velocidade', 'mudar plano', 'velocidade', 'plano'):
+    if userInputString in ('contratar', 'trocar plano', 'aumentar velocidade', 'mudar plano', 'mudar o plano', 'mudar de plano', 'trocar plano', 'trocar de plano', 'trocar o plano', 'velocidade', 'plano'):
         newPlanOption()
     elif userInputString in ( 'suporte', 'lenta', 'internet lenta', 'internet esta lenta', 'problema', 'velocidade'):
         supportOption()
     elif userInputString in ('boleto', 'segunda via', '2ª via', 'fatura'):
         billingOption()
     else:
-        print('Não foi posível entender a sua mensagem, seu atendimento será encerrado.')
-        exit()
+        print('Não foi posível entender a sua mensagem...')
+        registeredClient() 
+        
 
 while(True):
     checkPhoneNumber()
