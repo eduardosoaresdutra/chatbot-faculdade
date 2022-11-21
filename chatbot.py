@@ -12,13 +12,16 @@ def checkPhoneNumber():
 
     for line in phoneNumbersFile:
         if line.rstrip('\n') == userPhoneNumber.rstrip('\n'):
+            phoneNumbersFile.seek(0)
             phoneNumbersFile.close()
             registeredClient()
         else:
+            phoneNumbersFile.seek(0)
             phoneNumbersFile.close()
             firstMessage()
 
 def firstMessage():
+    clearConsole()
     print('Olá! Seja bem-vindo a WE-RJ Telecom!')
 
     userCpf = int(input('Nosso sistema identificou que este é o seu primeiro contato conosco, por favor, digite o seu CPF:'))
@@ -28,14 +31,14 @@ def firstMessage():
 
     newUser = {'cpf': userCpf, 'email': userEmail, 'phoneNumber': userPhoneNumber, 'firstName': userFirstName}
 
-    clients = open('clients.txt', 'w')
+    clients = open('clients.txt', 'a')
     clients.write(str(newUser))
     clients.write('\n')
     clients.close()
 
     userPhoneNumber = userPhoneNumber + '\n'
 
-    phoneNumbersFile = open('phoneNumbers.txt', 'w')
+    phoneNumbersFile = open('phoneNumbers.txt', 'a')
     phoneNumbersFile.write(userPhoneNumber)
     phoneNumbersFile.close()
 
